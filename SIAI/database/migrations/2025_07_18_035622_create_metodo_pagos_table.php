@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('metodo_pagos', function (Blueprint $table) {
             $table->id();
+
+            $table->string('tipo_metodo')->unique()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

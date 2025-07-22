@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('vendedores', function (Blueprint $table) {
-            $table->id();
+            $table->bigInteger("numero_identificacion")->primary()->unique()->onDelete('cascade');
+
+            $table->string("nombre")->onDelete('cascade');
+            $table->string("apellidos")->onDelete('cascade');
+            $table->string("email")->onDelete('cascade');
+            $table->string("clave")->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

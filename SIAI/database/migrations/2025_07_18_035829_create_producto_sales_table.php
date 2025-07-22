@@ -12,7 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('producto_sales', function (Blueprint $table) {
-            $table->id();
+            $table->integer("id_venta")->constrained('ventas')->onDelete('cascade')->primary();
+            $table->integer("id_producto")->unique()->onDelete('cascade')->primary();
+
+            $table->string("categoria")->onDelete('cascade');
+            $table->decimal('precio', 10, 2)->onDelete('cascade')->notNull();
+
+            $table->foreignId('id_vendedor')->constrained('vendedores')->onDelete('cascade');
+
+            $table->morphs('caracteristicas');
+
             $table->timestamps();
         });
     }

@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ventas', function (Blueprint $table) {
-            $table->id();
+            $table->id("id_venta");
+
+            $table->foreignId('numero_identificacion')->constrained('usuarios')->onDelete('cascade');
+            $table->dateTime('fecha_venta');
+            $table->decimal('valor_venta', 10, 2);
+            $table->foreignId('metodo_pago_id')->constrained('metodo_pagos')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

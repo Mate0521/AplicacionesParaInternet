@@ -17,7 +17,13 @@ class UsuarioFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'numero_identificacion' => $this->faker->unique()->randomNumber(),
+            'nombre' => $this->faker->firstName(),
+            'apellidos' => $this->faker->lastName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'clave' => md5($this->faker->password()),
+            'direccion' => $this->faker->address(),
+            
         ];
     }
 }

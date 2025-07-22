@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('telefono_users', function (Blueprint $table) {
-            $table->id();
+
+            $table->id("id_user")->foreignId('numero_identificacion')->constrained('usuarios')->onDelete('cascade');
+
+            $table->string("telefono")->unique()->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

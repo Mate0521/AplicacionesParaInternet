@@ -12,7 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('devoluciones', function (Blueprint $table) {
-            $table->id();
+            $table->id("id_devolucion");
+
+            $table -> string('motivo')->onDelete('cascade');
+            $table->dateTime('fecha_devolucion')->onDelete('cascade');
+            
             $table->timestamps();
         });
     }

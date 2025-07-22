@@ -11,15 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registrars', function (Blueprint $table) {
+        Schema::create('productos__devueltos', function (Blueprint $table) {
             $table->integer('id_producto');
-            $table->integer("id_venta");
+            $table->integer("id_devolucion");
 
-            $table->primary(['id_producto', 'id_venta']);
+            $table->primary(['id_producto', 'id_devolucion']);
 
             $table->foreign('id_producto')->references('id')->on('productos')->onDelete('cascade');
-            $table->foreign('id_venta')->references('id')->on('ventas')->onDelete('cascade');
-
+            $table->foreign('id_devolucion')->references('id')->on('devoluciones')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('registrars');
+        Schema::dropIfExists('productos__devueltos');
     }
 };

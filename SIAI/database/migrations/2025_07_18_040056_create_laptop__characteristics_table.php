@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('laptop__characteristics', function (Blueprint $table) {
             $table->id();
+
+            $table->string('processor')->onDelete('cascade');
+            $table->string('ram')->onDelete('cascade');
+            $table->string('storage')->onDelete('cascade');
+            $table->string('graphics_card')->onDelete('cascade');
+            $table->string('screen_size')->onDelete('cascade');
+            $table->string('battery_life')->onDelete('cascade');
+            $table->string('color')->onDelete('cascade');
+            $table->string('operating_system')->onDelete('cascade');
+
+
             $table->timestamps();
         });
     }
